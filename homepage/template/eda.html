@@ -1,0 +1,128 @@
+<!DOCTYPE html> <!--HTML5임을 의미-->
+<html>
+    <head>
+        <title>EDA Result</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'site.css' %}"/>
+    </head>
+
+    <body>
+        <h1>EDA Result: 그가 좋아하는 노래</h1>
+
+        <p>
+            Spotify에서의 노래에 대한 분석을 하는
+            <A href="https://www.kaggle.com/geomack/spotifyclassification">
+                데이터셋
+            </A>
+            에 대한 EDA 결과
+        </p>
+        <p>
+            <h2 class="message">0. Correlationship</h2>
+            <img src="{% static 'eda/corr.png' %}" alt='image'/>
+            <ul>
+                <li>
+                    먼저, 목표로 하는 것은 target의 추측이기 때문에, Target과의 관련도를 분석한다.
+                </li>
+                <li>
+                    이 중 관련도가 0.1을 넘어가는 특징값을 골라보면,
+                    <ul>
+                        <li>acousticness(-0.130)</li>
+                        <li>daceability(0.177)</li>
+                        <li>duration_ms(0.146)</li>
+                        <li>instrumentalness (0.153)</li>
+                        <li>speechiness(0.154)</li>
+                        <li>valence(0.108)</li>
+                    </ul>
+                    정도가 있다.
+                </li>
+            </ul>
+            </span>
+        </p>
+        <p>
+            <h2 class="message">1. Dance Ability</h2>
+            <img src="{% static 'eda/1.danceability.png' %}" alt='image'/>
+            <ul>
+                <li>
+                    결과를 보았을 때, danceability에 대해
+                    <ul>                            
+                        <li>0.6에 가깝거나 그보다 낮으면 노래가 싫을 확률이 높다.</li>
+                        <li>0.8에 가깝거나 그보다 높으면 노래가 좋을 확률이 높다.</li>
+                    </ul>
+                </li>
+                <li>
+                    이 데이터는 개인의 취향이 반영되어 있을 것이다.
+                </li>
+                <li>
+                    danceability가 높으면 노래를 좋아할 확률이 더 높다.
+                    <ul>
+                        <li>높다고 판단하는 기준은 약 0.7 내외인 것으로 보인다.</li>
+                    </ul>
+                </li>
+            </ul>
+            </span>
+        </p>
+        <p>
+            <h2 class="message">2. Instrumentalness</h2>
+            <img src="{% static 'eda/2. instrumentalness_big.png' %}" alt='image'/>
+            <img src="{% static 'eda/2. ins.png' %}" alt='image'/>
+            <ul>
+                <li>
+                    위 그래프는 instrumentalness가 0.05를 초과하는 데이터에 대한 분석이다.
+                    <ul>                            
+                        <li>instrumentalness가 길 때 like의 비율이 더 높다.</li>
+                        <li>오른쪽의 그림을 보면 0.05보다 긴 경우를 확인하기 쉽다.</li>
+                    </ul>
+                </li>
+                <li>
+                    이 데이터는 개인의 취향이 반영되어 있을 것이다.
+                </li>
+                <li>
+                    danceability가 높으면 노래를 좋아할 확률이 더 높다.
+                    <ul>
+                        <li>높다고 판단하는 기준은 약 0.7 내외인 것으로 보인다.</li>
+                    </ul>
+                </li>
+            </ul>
+            <img src="{% static 'eda/3. instrumentalness_small.png' %}" alt='image'/>
+            <img src="{% static 'eda/3. instrumentalness_small_2.png' %}" alt='image'/>
+            <ul>
+                <li>
+                    위 그래프는 instrumentalness가 0.001보다 낮은 하는 데이터에 대한 분석이다.
+                    <ul>                            
+                        <li>instrumentalness가 짧을 때 dislike의 비율이 더 높다.</li>
+                        <li>오른쪽의 그림을 보면 0.05 아래로는 더 확인하기 쉽다.</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+        <p>
+            <h2 class="message">3. Speechiness</h2>
+            <img src="{% static 'eda/4. speechness.png' %}" alt='image'/>
+            <ul>
+                <li>
+                    위 그래프는 speechiness의 크기에 따른 호불호의 정도를 나타낸다.
+                    <ul>                            
+                        <li>0 주변에 대부분이 몰려있다.</li>
+                        <li>전반적으로 disllike가 더 몰려있음을 확인할 수 있다.</li>
+                    </ul>
+                </li>
+            </ul>
+            <img src="{% static 'eda/4. speechness_2.png' %}" alt='image'/>
+            <li>
+                위 그래프는 0에 대해 매우 확대를 한 그래프이다.
+                <ul>                            
+                    <li>0.1 이전에는 경향성이 크게 바뀌지 않는다.</li>
+                    <li>전반적으로 disllike가 더 몰려있음을 확인할 수 있다.</li>
+                </ul>
+            </li>
+            
+            <img src="{% static 'eda/4. speechness_3.png' %}" alt='image'/>
+            <li>
+                위 그래프는 0.10 이후에 대해 매우 확대를 한 그래프이다.
+                <ul>                            
+                    <li>like가 역전하여 dislike보다 비율이 높아진다.</li>
+                </ul>
+            </li>
+        </p>
+    </body>
+</html>
